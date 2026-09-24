@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GrapeScan | Detección de enfermedades</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="hero">
+
+            <span class="eyebrow">
+                ANÁLISIS MEDIANTE INTELIGENCIA ARTIFICIAL
+            </span>
+
+            <h1>
+                Detecta posibles enfermedades
+                <span>en hojas de uva.</span>
+            </h1>
+
+            <p>
+                Sube una fotografía de una hoja de uva y nuestro modelo
+                analizará sus características para identificar la clase
+                correspondiente.
+            </p>
+
+        </section>
+
+
+        <section class="scanner">
+
+            <div id="uploadArea" class="upload-area">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h2>Sube una imagen</h2>
+
+                <p>
+                    Arrastra una fotografía aquí o selecciona un archivo
+                </p>
+
+                <button id="selectButton" class="primary-button">
+                    Seleccionar imagen
+                </button>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <span class="file-info">
+                    JPG, JPEG o PNG
+                </span>
+
+            </div>
+
+
+            <div id="previewContainer" class="preview-container hidden">
+
+                <div class="preview-header">
+
+                    <div>
+                        <span class="section-label">
+                            IMAGEN SELECCIONADA
+                        </span>
+
+                        <h3>Lista para analizar</h3>
+                    </div>
+
+                    <button id="removeButton" class="remove-button">
+                        Cambiar
+                    </button>
+
+                </div>
+
+                <div class="image-wrapper">
+                    <img id="previewImage" alt="Vista previa de la hoja">
+                </div>
+
+                <button id="analyzeButton" class="analyze-button">
+                    Analizar hoja
+                </button>
+
+            </div>
+
+
+            <div id="loading" class="loading hidden">
+
+                <div class="loader"></div>
+
+                <h3>Analizando imagen</h3>
+
+                <p>
+                    El modelo está procesando las características de la hoja.
+                </p>
+
+            </div>
+
+
+            <div id="result" class="result hidden">
+
+                <div class="result-top">
+                    <span class="section-label">
+                        RESULTADO DEL ANÁLISIS
+                    </span>
+
+                    <span id="confidenceBadge" class="confidence">
+                        0%
+                    </span>
+                </div>
+
+                <div class="result-main">
+
+                    <span class="result-caption">
+                        Clasificación detectada
+                    </span>
+
+                    <h2 id="resultClass">
+                        —
+                    </h2>
+
+                    <p>
+                        Nivel de confianza del modelo
+                    </p>
+
+                    <div class="confidence-bar">
+                        <div id="confidenceBar"></div>
+                    </div>
+
+                    <div class="result-details">
+                        <span>Confianza</span>
+                        <strong id="confidenceText">0%</strong>
+                    </div>
+
+                </div>
+
+                <!-- SECCIÓN DEL ASISTENTE IA -->
+                <div class="ai-assistant-section">
+                    <button id="aiRecommendButton" class="ai-button">
+                        Obtener plan de curación y prevención
+                    </button>
+
+                    <div id="aiLoading" class="ai-loading hidden">
+                        <div class="loader-small"></div>
+                        <span>Consultando a la IA agrícola...</span>
+                    </div>
+
+                    <div id="aiOutput" class="ai-output hidden">
+                        <h4>Recomendación agronómica</h4>
+                        <div id="aiText" class="ai-text"></div>
+                    </div>
+                </div>
+
+                <button id="newAnalysisButton" class="secondary-button">
+                    Analizar otra imagen
+                </button>
+
+            </div>
+
+
+            <div id="error" class="error hidden">
+                <strong>No se pudo analizar la imagen</strong>
+                <p id="errorText"></p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>
+                GrapeScan · Modelo de clasificación de imágenes
+            </p>
+
+            <p class="disclaimer">
+                Los resultados corresponden a una predicción del modelo
+                y no sustituyen una evaluación profesional.
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

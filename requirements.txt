@@ -1,0 +1,6 @@
+flask
+tensorflow
+pillow
+numpy
+python-dotenv
+requests
